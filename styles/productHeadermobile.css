@@ -10,7 +10,7 @@ html, body {
 
 @media (max-width: 569px) and (min-width: 10px) {
     body {
-        padding-top: 140px;
+       padding-top: 113px;
     }
 
     .header-box {
