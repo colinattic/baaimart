@@ -21,12 +21,12 @@ html, body {
         display: flex !important;
         background-color: rgb(241, 241, 241);
         border-radius: 10px; /* Add border radius */
-        width: calc(100vw - 20px); /* Full width minus margin */
+        width: calc(100% - 20px); /* Full width minus margin */
         height: auto; /* Adjust height to fit content */
         padding: 10px;
         justify-content: center;
         align-items: center;
-        margin: 0 10px; /* Add margin on both sides */
+        margin: 10px; /* Add margin on all sides */
         box-sizing: border-box; /* Ensure padding is included in width */
         position: relative;
     }
