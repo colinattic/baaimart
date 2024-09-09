@@ -19,7 +19,7 @@ html, body {
 
     .main-head-mobile {
         display: flex !important;
-        background-color: rgb(241, 241, 241);
+        background: linear-gradient(to bottom, #ffeeee, #f5f5f5);
         border-radius: 10px; /* Add border radius */
         width: calc(100% - 20px); /* Full width minus margin */
         height: auto; /* Adjust height to fit content */
