@@ -1,0 +1,84 @@
+/* Ensure the HTML and body elements cover the full viewport */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+    box-sizing: border-box;
+}
+
+@media (max-width: 569px) and (min-width: 10px) {
+    body {
+        padding-top: 140px;
+    }
+
+    .header-box {
+        margin-top: 10vw;
+    }
+
+    .main-head-mobile {
+        display: flex !important;
+        background-color: rgb(241, 241, 241);
+        border-radius: 10px; /* Add border radius */
+        width: calc(100vw - 20px); /* Full width minus margin */
+        height: auto; /* Adjust height to fit content */
+        padding: 10px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 10px; /* Add margin on both sides */
+        box-sizing: border-box; /* Ensure padding is included in width */
+        position: relative;
+    }
+
+    .offer-products-header-mobile {
+        display: grid; /* Use grid layout */
+        grid-template-columns: repeat(4, 1fr); /* Four equal columns */
+        gap: 10px; /* Space between items */
+        z-index: 100;
+        width: 100%; /* Full width of the parent */
+        overflow-x: hidden; /* Remove horizontal scroll */
+    }
+
+    .mobile-header-welcome {
+        margin-left: 15px;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+    .offer-product {
+        padding: 5px;
+        border-radius: 10px; /* Add border radius to products */
+        z-index: 1;
+        margin: 0;
+    }
+
+    .offer-price-row-home {
+        justify-content: space-between;
+        display: flex;
+        align-items: center;
+    }
+
+    .offer-price-home {
+        font-size: 10px;
+        font-weight: 500;
+        color: rgb(5, 5, 5);
+        margin-left: 3px;
+    }
+
+    .offer-price-home span {
+        font-size: 15px;
+    }
+
+    .offer-percentage-home {
+        display: none;
+    }
+
+    .header-slider {
+        display: none;
+    }
+
+    .header-offer-container {
+        display: none;
+    }
+}

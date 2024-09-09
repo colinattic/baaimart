@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
+
+@media (max-width: 569px) and (min-width: 10px) {
+    .mobile-header-view {
+        display: block !important;
+        justify-content: space-between ;
+        align-items: center;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        background: rgb(255, 255, 255);
+        width: 100%;
+        padding-left: 0;
+        padding-top: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+        border-bottom:1px solid gray ;
+        
+    }
+
+    .mobile-view-header1 {
+        display: flex;
+        align-items: center;
+        width: 100%;
+    }
+
+    .mobile-view-header1 .mobile-view-logo {
+        margin-right: auto;
+        margin-left: 0px;
+        padding-bottom: 14px;
+    }
+
+    .notification-icon-mobile-view {
+        font-size: 24px; 
+        color: #000; 
+        margin-left: 10px; 
+    }
+    
+    .search-bar-mobile-view {
+        display: flex;
+        width: calc(100% - 20px); /* Subtract the margin from the full width */
+        background: #fff;
+        margin-left: 15px;
+        margin-right: px; /* Ensure there's space for the margin */
+        border-radius: 15px;
+        border: 1px solid black;
+        box-sizing: border-box; /* Include padding and border in width calculation */
+        overflow: hidden; /* Make sure the content fits within rounded corners */
+    }
+
+
+    .mobile-search-bar-view {
+        border: none;
+        padding-left: 18px;
+        background: #fff;
+        width: 100%;
+        border-radius: 15px 0 0 15px; /* Rounded corners only on the left side */
+        font-size: 16px; /* Adjusted font size for readability */
+        outline: none; /* Remove outline for a cleaner look */
+    }
+
+    .mobile-view-serch-btn {
+        padding-left: 10px;
+        padding-right: 10px;
+        border-radius: 20px; /* Circular button */
+        margin: 3px;
+        color: #fff; /* White text color */
+        background: #1e1f34; /* Darker background color */
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer; /* Pointer cursor on hover */
+        transition: background 0.3s ease; /* Smooth transition for hover effect */
+    }
+
+    .mobile-view-serch-btn:hover {
+        background: #373854; /* Slightly lighter shade on hover */
+    }
+
+    .icon {
+        color: #000000;
+        padding-top: 3px;
+        padding-bottom: 2px; 
+        font-size: 20px;
+    }
+
+    .search-ai-camara{
+        background: white;
+        border: none;
+    }
+    .search-ai-camara .icon{
+        font-size: 20px;
+        margin-right: 5px;
+    }
+    .nav-button-on-phone-view{
+        display: flex;
+        padding-top: 3px;
+        padding-left: 15px;
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-x: scroll;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none;
+    }
+
+    .nav-button-on-phone-view::-webkit-scrollbar {
+      display: none; /* Safari and Chrome */
+    }
+
+    .nav-button-on-phone-view button{
+        margin-top: 3px;
+        background: none;
+        border: none;
+        padding-right: 10px;
+        cursor: pointer;
+        margin-right: 3px;
+        font-weight: 500;
+        color: #000;
+    }
+
+      .header-slider a {
+       display: none;
+      }
+      
+}
+
+

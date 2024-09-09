@@ -1,0 +1,42 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="js-home-products"></div>
+    <script src="script.js"></script>
+    <script>
+        // Render home page products
+        let home_products_HTML = '';
+
+        home_products.forEach((product) => {
+            home_products_HTML += `
+                <div class="home-product">
+                    <div class="product-img-row">
+                        <a href="product-detail.html?id=${product.id}" class="product-link">
+                            <img class="home-product-img" src="${product.image}" alt="${product.title}">
+                        </a>
+                    </div>
+                    <div class="product-info-row">
+                        <p class="home-product-title">${product.title}</p>
+                        <div class="review-an-sold">
+                            <img class="home--product-review" src="images/ratings/rating-${product.rating.stars * 10}.png" alt="Rating">
+                            <p class="product-sold-home"><span>${product.sold}</span> sold</p>
+                        </div>
+                        <p class="home-product-price">${product.currency} <span>${product.price}</span>${product.price_senc}</p>
+                        <p class="home-product-extra-off">${product.extra_off}</p>
+                        <p class="home-product-free-ship-home">${product.free_shipping}</p>
+                    </div>
+                </div>
+            `;
+        });
+
+        document.querySelector('.js-home-products').innerHTML = home_products_HTML;
+    </script>
+</body>
+</html>
