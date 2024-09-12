@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap');
 
 @media (max-width: 569px) and (min-width: 10px) {
+
+    .mobile-view-logo {
+        width: 156px;
+        padding-left: 18px;
+        padding-bottom: 5px;
+    }
     .mobile-header-view {
         display: block !important;
         justify-content: space-between ;
@@ -14,26 +20,25 @@
         padding-top: 10px;
         padding-right: 10px;
         padding-bottom: 10px;
-        border-bottom:1px solid gray ;
-        
     }
 
     .mobile-view-header1 {
         display: flex;
         align-items: center;
         width: 100%;
+        justify-content: space-between;
     }
 
     .mobile-view-header1 .mobile-view-logo {
         margin-right: auto;
         margin-left: 0px;
-        padding-bottom: 14px;
     }
 
     .notification-icon-mobile-view {
         font-size: 24px; 
         color: #000; 
         margin-left: 10px; 
+        padding-right: 10px;
     }
     
     .search-bar-mobile-view {

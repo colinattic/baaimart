@@ -15,7 +15,7 @@ let mother_of_the_event = `
             <div class="welcome-title">
                 <!-- welcome title open -->
                 <h2 style="color: rgb(253, 56, 56);">Today Offers</h2>
-                <p>Make your day a Fine</p>
+                <p>We Accepting <img src="images/assets/btc-logo.png" width="94px" alt=""></p>
                 <!-- welcome title close -->
             </div>
 
@@ -249,7 +249,7 @@ document.querySelector('.js_product_any_3_offer').innerHTML = products_any_3_HTM
 
 //line 1 open
 const product_super_deel_line_1 =[{
-    image: 'https://shorturl.at/BkSQR',
+    image: 'images/assets/Untitled design.png',
     currency: 'LKR',
     price: '99',
     price_senc: '.88', 
@@ -291,7 +291,7 @@ let product_super_deel_line_2_HTML = '' ;
 
 product_super_deel_line_2.forEach((product) =>{
     product_super_deel_line_2_HTML += `
-            <div class="offer-product-2">
+            <div class="offer-product-right-2">
                   <img class="offer-product-img-2" src="${product.image}" alt="">
     
                   <div class="offer-price-row-home">

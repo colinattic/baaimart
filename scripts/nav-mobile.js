@@ -2,7 +2,9 @@ let nav_mobile_HTML = '';
 
 nav_mobile_HTML += `
      <div class="mobile-view-header1">
+          <a href="index.html">
             <img class="mobile-view-logo" src="images/assets/fine-logo-dark.png" width="150px" alt=""> 
+          </a>  
             <i class="material-icons notification-icon-mobile-view">notifications</i>
         </div>
         <div class="search-bar-mobile-view">

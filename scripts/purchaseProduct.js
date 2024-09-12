@@ -1,8 +1,8 @@
 let product_purchase_HTML = '';
 
 product_purchase_HTML += `
-        <div class="title">
-                <h3>Buy new:</h3> <img src="images/assets/circle_icon.png" alt="" width="20px">
+           <div class="title-to-buy-from">
+                <h3>Pay:</h3>  <img src="images/assets/visa-master.png" alt="" width="60px"> <img src="images/assets/btc-logo-percutes.png" alt="" width="60px"> <img src="images/assets/binance-pay.png" alt="" width="60px">
             </div>
 
             <h1 class="price">Rs<span>999</span></h1>

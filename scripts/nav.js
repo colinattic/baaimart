@@ -58,10 +58,6 @@ nav_html += `
           <img src="images/assets/user.png" alt="">
         </a>
     
-        <div class="order-an-return-btn">
-            <p>Return</p>
-            <h1>& Orders</h1>
-          </div>
 
         <a href="/cart.html" class="nav-cart">
           <img src="images/assets/cart_icon.png" width="35px" alt="">

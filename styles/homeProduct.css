@@ -89,7 +89,6 @@
     .home-products {
         display: grid;
         grid-template-columns: 1fr 1fr; /* Further adjust for even smaller screens */
-
     }
 
     .home-products-to-see{
