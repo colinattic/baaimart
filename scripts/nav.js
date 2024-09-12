@@ -6,7 +6,7 @@ nav_html += `
         </div>
         <a href="/">
           <!--Header Logo-->
-          <img class="Header-logo" src="images/assets/fine-logo-light.png" width="135" alt="">
+          <img class="Header-logo" src="images/assets/fine-logo-light.png" width="100px" alt="">
         </a>
     
         <!--Delivery to Country-->

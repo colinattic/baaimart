@@ -298,13 +298,17 @@ body{
     
     padding: 10px 10px;
   }
-  .product-title{
+
+  .product-title {
     font-size: 25px;
-    min-width: 444px;
+    min-width: 400px;
+    /* Ensure it's a block-level element */
   }
+  
   .product-d-purchase {
     max-width: 90%;
     margin: 20px auto;
+    
   }
   .rating-image{
     width: 70px;

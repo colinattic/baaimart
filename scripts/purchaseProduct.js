@@ -7,13 +7,13 @@ product_purchase_HTML += `
 
             <h1 class="price">Rs<span>999</span></h1>
             <div class="gap">
-              <p>Get <b>Fast, free shipping</b> with <span>fine</span></p>
+              <p>Get <b>Fast, free shipping</b> with <span>Baai Mart</span></p>
               <p><span>Free Return</span></p>
             </div>
 
             <div class="gap">
               <p><span>FREE delivery</span> <b>Saturday</b>,</p>
-              <p><b>January 27</b> on orders shipped by Fine over Rs 399</p>
+              <p><b>January 27</b> on orders shipped by BaaiMart over Rs 399</p>
             </div>
 
             <div class="gap">
@@ -38,8 +38,8 @@ product_purchase_HTML += `
             <button class="btn product-buy">Buy Now</button>
 
             <div class="product-seller-info">
-              <p>Ships from</p> <p> <span>Fine</span></p>
-              <p>Sold by</p> <p> <span>Fine Pvt</span></p>
+              <p>Ships from</p> <p> <span>Baai Mart</span></p>
+              <p>Sold by</p> <p> <span>Baai Mart</span></p>
               <p>Return</p> <p> <span>Eligible for Return, Refund or relacement within 30 days of receipt</span></p>
               <p>Payment</p> <p> <span>Secure transction</span></p>
             </div>
