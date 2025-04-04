@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>باي Pay</title>
+    <title>
+باي Pay</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -64,6 +65,7 @@
             display: flex;
             align-items: center;
             gap: 15px;
+            cursor: pointer;
         }
 
         .user-img {
@@ -83,6 +85,7 @@
             position: relative;
             font-size: 1.1rem;
             color: var(--dark);
+            cursor: pointer;
         }
 
         .notification-badge {
@@ -296,6 +299,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            cursor: pointer;
         }
 
         table {
@@ -455,6 +459,38 @@
             font-family: 'Inter', sans-serif;
             font-size: 0.75rem;
         }
+
+        /* Freeze message */
+        .freeze-message {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: white;
+            font-size: 1.5rem;
+            text-align: center;
+            padding: 20px;
+            display: none;
+        }
+
+        .freeze-content {
+            background-color: var(--danger);
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+        }
+
+        .freeze-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: white;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
@@ -463,7 +499,8 @@
         <header>
             <div class="logo">
                 <i class="fas fa-coins"></i>
-                <span>باي Pay</span>
+                <span>
+باي Pay</span>
             </div>
             <div class="user-profile">
                 <div class="notification-bell">
@@ -482,10 +519,10 @@
                     <span class="currency">LKR</span> 2,376,865.77
                 </div>
                 <div class="balance-actions">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" id="transfer-btn">
                         <i class="fas fa-paper-plane"></i> Transfer
                     </button>
-                    <button class="btn btn-outline">
+                    <button class="btn btn-outline" id="deposit-btn">
                         <i class="fas fa-plus"></i> Deposit
                     </button>
                 </div>
@@ -539,7 +576,7 @@
             <div class="transactions">
                 <div class="section-header">
                     <h2 class="section-title">Recent Activity</h2>
-                    <a href="#" class="view-all">
+                    <a href="#" class="view-all" id="view-all-btn">
                         View All <i class="fas fa-chevron-right"></i>
                     </a>
                 </div>
@@ -639,9 +676,70 @@
         </div>
     </div>
 
+    <!-- Freeze Message -->
+    <div class="freeze-message" id="freeze-message">
+        <div class="freeze-content">
+            <div class="freeze-icon">
+                <i class="fas fa-lock"></i>
+            </div>
+            <h2>Account Temporarily Frozen</h2>
+            <p>Your account has been frozen temporarily. Please contact customer support for assistance.</p>
+            <button id="close-freeze" style="margin-top: 20px; padding: 8px 20px; background: white; color: var(--danger); border: none; border-radius: 5px; cursor: pointer;">
+                Close
+            </button>
+        </div>
+    </div>
+
     <script>
-        // Update relative dates
+        // Add click event to all buttons and clickable elements
         document.addEventListener('DOMContentLoaded', function() {
+            // Get all interactive elements
+            const interactiveElements = [
+                ...document.querySelectorAll('button'),
+                ...document.querySelectorAll('.user-profile'),
+                ...document.querySelectorAll('.notification-bell'),
+                ...document.querySelectorAll('.view-all')
+            ];
+
+            // Freeze message element
+            const freezeMessage = document.getElementById('freeze-message');
+            const closeFreezeBtn = document.getElementById('close-freeze');
+
+            // Function to show freeze message
+            function showFreezeMessage() {
+                freezeMessage.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            }
+
+            // Function to hide freeze message
+            function hideFreezeMessage() {
+                freezeMessage.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+
+            // Add click event to all interactive elements
+            interactiveElements.forEach(element => {
+                element.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showFreezeMessage();
+                });
+            });
+
+            // Close button for freeze message
+            closeFreezeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                hideFreezeMessage();
+            });
+
+            // Close if clicked outside the message
+            freezeMessage.addEventListener('click', function(e) {
+                if (e.target === freezeMessage) {
+                    hideFreezeMessage();
+                }
+            });
+
+            // Update relative dates
             function updateRelativeDates() {
                 const now = new Date(2025, 3, 3); // Set to April 3, 2025
                 const transactions = document.querySelectorAll('.transaction-date');
@@ -666,14 +764,6 @@
             }
             
             updateRelativeDates();
-            
-            // Simulate real-time updates
-            setInterval(() => {
-                const notificationBadge = document.querySelector('.notification-badge');
-                if (Math.random() > 0.7) {
-                    notificationBadge.textContent = parseInt(notificationBadge.textContent) + 1;
-                }
-            }, 30000);
         });
     </script>
 </body>
