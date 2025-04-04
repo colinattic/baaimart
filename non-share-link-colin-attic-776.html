@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-باي Pay</title>
+    <title>باي Pay</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -46,6 +45,7 @@
             align-items: center;
             padding: 15px 0;
             margin-bottom: 30px;
+            position: relative;
         }
 
         .logo {
@@ -61,11 +61,17 @@
             color: var(--secondary);
         }
 
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
         .user-profile {
             display: flex;
             align-items: center;
-            gap: 15px;
             cursor: pointer;
+            margin-left: 15px;
         }
 
         .user-img {
@@ -79,6 +85,7 @@
         .user-name {
             font-weight: 600;
             font-size: 0.95rem;
+            margin-left: 10px;
         }
 
         .notification-bell {
@@ -400,9 +407,14 @@
                 gap: 15px;
             }
 
-            .user-profile {
+            .profile-container {
                 width: 100%;
                 justify-content: space-between;
+                margin-top: 15px;
+            }
+
+            .user-profile {
+                margin-left: 0;
             }
 
             .balance-actions {
@@ -460,36 +472,98 @@
             font-size: 0.75rem;
         }
 
-        /* Freeze message */
+        /* Professional Freeze Message */
         .freeze-message {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 0.85);
             display: flex;
             justify-content: center;
             align-items: center;
             z-index: 1000;
             color: white;
-            font-size: 1.5rem;
-            text-align: center;
-            padding: 20px;
-            display: none;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .freeze-message.active {
+            opacity: 1;
+            pointer-events: all;
         }
 
         .freeze-content {
-            background-color: var(--danger);
+            background-color: white;
             padding: 30px;
-            border-radius: 10px;
-            max-width: 500px;
+            border-radius: 12px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .freeze-message.active .freeze-content {
+            transform: translateY(0);
         }
 
         .freeze-icon {
-            font-size: 3rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
+            color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .freeze-content h2 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .freeze-content p {
+            color: #64748b;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        #close-freeze {
+            padding: 12px 30px;
+            background: #2563eb;
             color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        #close-freeze:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+        }
+
+        .contact-support {
+            display: block;
+            margin-top: 20px;
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-support:hover {
+            text-decoration: underline;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -499,16 +573,17 @@
         <header>
             <div class="logo">
                 <i class="fas fa-coins"></i>
-                <span>
-باي Pay</span>
+                <span>باي Pay</span>
             </div>
-            <div class="user-profile">
+            <div class="profile-container">
                 <div class="notification-bell">
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge">3</span>
                 </div>
-                <img src="https://ui-avatars.com/api/?name=L+N&background=2563eb&color=fff&size=128" alt="Lukman Nawas" class="user-img">
-                <span class="user-name">Lukman Nawas</span>
+                <div class="user-profile">
+                    <img src="https://ui-avatars.com/api/?name=L+N&background=2563eb&color=fff&size=128" alt="Lukman Nawas" class="user-img">
+                    <span class="user-name">Lukman Nawas</span>
+                </div>
             </div>
         </header>
         
@@ -516,7 +591,7 @@
             <div class="balance-card">
                 <div class="balance-title">Available Balance</div>
                 <div class="balance-amount formatted-number">
-                    <span class="currency">LKR</span> 906,065.56
+                    <span class="currency">LKR</span> 1,870,865.77
                 </div>
                 <div class="balance-actions">
                     <button class="btn btn-primary" id="transfer-btn">
@@ -676,17 +751,21 @@
         </div>
     </div>
 
-    <!-- Freeze Message -->
+    <!-- Professional Freeze Message -->
     <div class="freeze-message" id="freeze-message">
         <div class="freeze-content">
             <div class="freeze-icon">
                 <i class="fas fa-lock"></i>
             </div>
-            <h2>Account Temporarily Frozen</h2>
-            <p>Your account has been frozen temporarily. Please contact customer support for assistance.</p>
-            <button id="close-freeze" style="margin-top: 20px; padding: 8px 20px; background: white; color: var(--danger); border: none; border-radius: 5px; cursor: pointer;">
-                Close
+            <h2>Account Temporarily Restricted</h2>
+            <p>For security reasons, your account access has been temporarily restricted. This is usually lifted automatically within 24 hours.</p>
+            <p>If you believe this is an error, please contact our support team immediately.</p>
+            <button id="close-freeze">
+                Acknowledge
             </button>
+            <a href="#" class="contact-support">
+                <i class="fas fa-headset"></i> Contact Support Center
+            </a>
         </div>
     </div>
 
@@ -707,13 +786,13 @@
 
             // Function to show freeze message
             function showFreezeMessage() {
-                freezeMessage.style.display = 'flex';
+                freezeMessage.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
 
             // Function to hide freeze message
             function hideFreezeMessage() {
-                freezeMessage.style.display = 'none';
+                freezeMessage.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
 
