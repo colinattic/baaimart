@@ -3,36 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lukman Nawas | Payment Dashboard</title>
+    <title>باي Pay</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #4361ee;
-            --secondary: #3f37c9;
-            --success: #4cc9f0;
-            --dark: #212529;
-            --light: #f8f9fa;
-            --danger: #f72585;
-            --warning: #f8961e;
-            --info: #4895ef;
+            --primary: #2563eb;
+            --secondary: #1d4ed8;
+            --success: #10b981;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #0ea5e9;
+            --gray: #64748b;
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
 
         body {
-            background-color: #f5f7ff;
+            background-color: #f8fafc;
             color: var(--dark);
             line-height: 1.6;
         }
 
         .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -66,8 +67,8 @@
         }
 
         .user-img {
-            width: 40px;
-            height: 40px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             object-fit: cover;
             border: 2px solid var(--primary);
@@ -75,11 +76,12 @@
 
         .user-name {
             font-weight: 600;
+            font-size: 0.95rem;
         }
 
         .notification-bell {
             position: relative;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--dark);
         }
 
@@ -112,59 +114,62 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             padding: 30px;
-            border-radius: 15px;
+            border-radius: 12px;
             margin-bottom: 20px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);
         }
 
         .balance-card::before {
             content: '';
             position: absolute;
-            top: -50px;
-            right: -50px;
-            width: 200px;
-            height: 200px;
+            top: -20px;
+            right: -20px;
+            width: 120px;
+            height: 120px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
         }
 
         .balance-title {
-            font-size: 1rem;
-            margin-bottom: 10px;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
             opacity: 0.9;
+            font-weight: 500;
         }
 
         .balance-amount {
-            font-size: 2.5rem;
+            font-size: 2.3rem;
             font-weight: 700;
             margin-bottom: 25px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
+            font-feature-settings: "tnum";
         }
 
         .currency {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             vertical-align: top;
             margin-right: 5px;
+            font-weight: 600;
         }
 
         .balance-actions {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 8px;
             border: none;
             cursor: pointer;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             display: flex;
             align-items: center;
             gap: 8px;
-            transition: all 0.3s ease;
+            transition: all 0.2s ease;
         }
 
         .btn-primary {
@@ -173,115 +178,119 @@
         }
 
         .btn-primary:hover {
-            background-color: rgba(255, 255, 255, 0.9);
-            transform: translateY(-2px);
+            background-color: rgba(255, 255, 255, 0.95);
+            transform: translateY(-1px);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
 
         .btn-outline {
             background-color: transparent;
             color: white;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
         }
 
         .btn-outline:hover {
             background-color: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
+            transform: translateY(-1px);
         }
 
         /* Stats Cards */
         .stat-card {
             grid-column: span 12;
             background-color: white;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 18px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
             display: flex;
             flex-direction: column;
+            border: 1px solid #f1f3f5;
         }
 
         .stat-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .stat-icon {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         .income .stat-icon {
-            background-color: rgba(76, 201, 240, 0.1);
+            background-color: rgba(16, 185, 129, 0.1);
             color: var(--success);
         }
 
         .pending .stat-icon {
-            background-color: rgba(248, 150, 30, 0.1);
+            background-color: rgba(245, 158, 11, 0.1);
             color: var(--warning);
         }
 
         .completed .stat-icon {
-            background-color: rgba(72, 149, 239, 0.1);
+            background-color: rgba(14, 165, 233, 0.1);
             color: var(--info);
         }
 
         .stat-title {
-            font-size: 0.9rem;
-            color: #6c757d;
+            font-size: 0.85rem;
+            color: var(--gray);
             font-weight: 500;
         }
 
         .stat-value {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 700;
             margin: 5px 0;
+            font-feature-settings: "tnum";
         }
 
         .stat-change {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             display: flex;
             align-items: center;
             gap: 5px;
         }
 
         .positive {
-            color: #28a745;
+            color: #10b981;
         }
 
         .negative {
-            color: #dc3545;
+            color: #ef4444;
         }
 
         /* Transactions Table */
         .transactions {
             grid-column: span 12;
             background-color: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f1f3f5;
         }
 
         .section-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
         }
 
         .section-title {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 600;
         }
 
         .view-all {
             color: var(--primary);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             text-decoration: none;
             display: flex;
@@ -295,49 +304,45 @@
         }
 
         th, td {
-            padding: 15px;
+            padding: 12px 15px;
             text-align: left;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #f1f3f5;
         }
 
         th {
             font-weight: 600;
-            color: #6c757d;
-            font-size: 0.8rem;
+            color: var(--gray);
+            font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .transaction-id {
-            font-weight: 500;
-            color: var(--dark);
-        }
-
         .transaction-amount {
             font-weight: 600;
+            font-feature-settings: "tnum";
         }
 
         .status {
-            padding: 6px 12px;
+            padding: 5px 10px;
             border-radius: 20px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: capitalize;
         }
 
         .status-completed {
-            background-color: rgba(40, 167, 69, 0.1);
-            color: #28a745;
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
         }
 
         .status-pending {
-            background-color: rgba(248, 150, 30, 0.1);
-            color: #f8961e;
+            background-color: rgba(245, 158, 11, 0.1);
+            color: var(--warning);
         }
 
         .status-failed {
-            background-color: rgba(220, 53, 69, 0.1);
-            color: #dc3545;
+            background-color: rgba(239, 68, 68, 0.1);
+            color: var(--danger);
         }
 
         .transaction-meta {
@@ -347,14 +352,15 @@
         }
 
         .transaction-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background-color: rgba(67, 97, 238, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background-color: rgba(37, 99, 235, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
+            font-size: 0.9rem;
         }
 
         .transaction-details {
@@ -364,11 +370,12 @@
 
         .transaction-name {
             font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .transaction-date {
-            font-size: 0.8rem;
-            color: #6c757d;
+            font-size: 0.75rem;
+            color: var(--gray);
         }
 
         /* Responsive Design */
@@ -378,7 +385,7 @@
             }
 
             .balance-amount {
-                font-size: 3rem;
+                font-size: 2.7rem;
             }
         }
 
@@ -407,6 +414,7 @@
                 display: block;
                 overflow-x: auto;
                 white-space: nowrap;
+                -webkit-overflow-scrolling: touch;
             }
 
             .balance-amount {
@@ -416,12 +424,12 @@
 
         /* Animation */
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .balance-card, .stat-card, .transactions {
-            animation: fadeIn 0.5s ease-out forwards;
+            animation: fadeIn 0.4s ease-out forwards;
         }
 
         .stat-card:nth-child(2) {
@@ -435,37 +443,50 @@
         .transactions {
             animation-delay: 0.3s;
         }
+
+        /* Modern number formatting */
+        .formatted-number {
+            font-feature-settings: "tnum";
+            font-variant-numeric: tabular-nums;
+        }
+        
+        /* Custom date format */
+        .custom-date {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.75rem;
+        }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fas fa-wallet"></i>
-                <span>BaaiPay</span>
+                <i class="fas fa-coins"></i>
+                <span>باي Pay</span>
             </div>
             <div class="user-profile">
                 <div class="notification-bell">
                     <i class="fas fa-bell"></i>
                     <span class="notification-badge">3</span>
                 </div>
-                <img src="https://ui-avatars.com/api/?name=Lukman+Nawas&background=4361ee&color=fff" alt="Lukman Nawas" class="user-img">
+                <img src="https://ui-avatars.com/api/?name=L+N&background=2563eb&color=fff&size=128" alt="Lukman Nawas" class="user-img">
                 <span class="user-name">Lukman Nawas</span>
             </div>
         </header>
         
         <div class="dashboard-grid">
             <div class="balance-card">
-                <div class="balance-title">Current Balance</div>
-                <div class="balance-amount">
-                    <span class="currency">LKR</span> 1,923,450.00
+                <div class="balance-title">Available Balance</div>
+                <div class="balance-amount formatted-number">
+                    <span class="currency">LKR</span> 2,376,865.77
                 </div>
                 <div class="balance-actions">
                     <button class="btn btn-primary">
-                        <i class="fas fa-arrow-up"></i> Send Money
+                        <i class="fas fa-paper-plane"></i> Transfer
                     </button>
                     <button class="btn btn-outline">
-                        <i class="fas fa-arrow-down"></i> Request
+                        <i class="fas fa-plus"></i> Deposit
                     </button>
                 </div>
             </div>
@@ -473,51 +494,51 @@
             <div class="stat-card income">
                 <div class="stat-header">
                     <div>
-                        <div class="stat-title">Monthly Income</div>
-                        <div class="stat-value">LKR 567,300</div>
+                        <div class="stat-title">This Month</div>
+                        <div class="stat-value formatted-number">LKR 1,487,320.50</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-arrow-up"></i>
                     </div>
                 </div>
                 <div class="stat-change positive">
-                    <i class="fas fa-chart-line"></i> 12.5% from last month
+                    <i class="fas fa-chart-line"></i> 18.6% from last month
                 </div>
             </div>
             
             <div class="stat-card pending">
                 <div class="stat-header">
                     <div>
-                        <div class="stat-title">Pending Payments</div>
-                        <div class="stat-value">LKR 342,000</div>
+                        <div class="stat-title">Pending</div>
+                        <div class="stat-value formatted-number">LKR 523,450.25</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-clock"></i>
                     </div>
                 </div>
                 <div class="stat-change negative">
-                    <i class="fas fa-chart-line"></i> 3 pending transactions
+                    <i class="fas fa-exclamation-circle"></i> 4 transactions
                 </div>
             </div>
             
             <div class="stat-card completed">
                 <div class="stat-header">
                     <div>
-                        <div class="stat-title">Completed</div>
-                        <div class="stat-value">12</div>
+                        <div class="stat-title">Processed</div>
+                        <div class="stat-value formatted-number">21</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-check-circle"></i>
                     </div>
                 </div>
                 <div class="stat-change positive">
-                    <i class="fas fa-chart-line"></i> 8.3% from last month
+                    <i class="fas fa-chart-line"></i> 12.3% from last month
                 </div>
             </div>
             
             <div class="transactions">
                 <div class="section-header">
-                    <h2 class="section-title">Recent Transactions</h2>
+                    <h2 class="section-title">Recent Activity</h2>
                     <a href="#" class="view-all">
                         View All <i class="fas fa-chevron-right"></i>
                     </a>
@@ -536,32 +557,32 @@
                             <td>
                                 <div class="transaction-meta">
                                     <div class="transaction-icon">
-                                        <i class="fas fa-laptop-code"></i>
+                                        <i class="fas fa-briefcase"></i>
                                     </div>
                                     <div class="transaction-details">
-                                        <div class="transaction-name">Web Development</div>
-                                        <div class="transaction-date">#TXN78945 • Today</div>
+                                        <div class="transaction-name">Consulting Project</div>
+                                        <div class="transaction-date">#TXN-8942 • Today</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>Jun 15, 2023</td>
-                            <td class="transaction-amount">LKR 450,000</td>
+                            <td class="custom-date">3/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 725,380.50</td>
                             <td><span class="status status-completed">Completed</span></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="transaction-meta">
                                     <div class="transaction-icon">
-                                        <i class="fas fa-users"></i>
+                                        <i class="fas fa-laptop-code"></i>
                                     </div>
                                     <div class="transaction-details">
-                                        <div class="transaction-name">Consulting Fee</div>
-                                        <div class="transaction-date">#TXN78944 • Yesterday</div>
+                                        <div class="transaction-name">Web Development</div>
+                                        <div class="transaction-date">#TXN-8939 • Yesterday</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>Jun 14, 2023</td>
-                            <td class="transaction-amount">LKR 125,300</td>
+                            <td class="custom-date">2/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 487,650.00</td>
                             <td><span class="status status-completed">Completed</span></td>
                         </tr>
                         <tr>
@@ -572,28 +593,44 @@
                                     </div>
                                     <div class="transaction-details">
                                         <div class="transaction-name">App Development</div>
-                                        <div class="transaction-date">#TXN78943 • Jun 13</div>
+                                        <div class="transaction-date">#TXN-8935 • 1 Apr</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>Jun 13, 2023</td>
-                            <td class="transaction-amount">LKR 342,000</td>
-                            <td><span class="status status-pending">Pending</span></td>
+                            <td class="custom-date">1/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 823,450.25</td>
+                            <td><span class="status status-pending">Processing</span></td>
                         </tr>
                         <tr>
                             <td>
                                 <div class="transaction-meta">
                                     <div class="transaction-icon">
-                                        <i class="fas fa-shopping-cart"></i>
+                                        <i class="fas fa-file-invoice-dollar"></i>
                                     </div>
                                     <div class="transaction-details">
-                                        <div class="transaction-name">E-commerce Project</div>
-                                        <div class="transaction-date">#TXN78942 • Jun 12</div>
+                                        <div class="transaction-name">Invoice #3287</div>
+                                        <div class="transaction-date">#TXN-8928 • 30 Mar</div>
                                     </div>
                                 </div>
                             </td>
-                            <td>Jun 12, 2023</td>
-                            <td class="transaction-amount">LKR 600,000</td>
+                            <td class="custom-date">30/Mar/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 340,385.00</td>
+                            <td><span class="status status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="transaction-meta">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-project-diagram"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-name">Project Milestone</div>
+                                        <div class="transaction-date">#TXN-8915 • 28 Mar</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="custom-date">28/Mar/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 612,500.00</td>
                             <td><span class="status status-completed">Completed</span></td>
                         </tr>
                     </tbody>
@@ -603,26 +640,40 @@
     </div>
 
     <script>
-        // Animated balance counter
+        // Update relative dates
         document.addEventListener('DOMContentLoaded', function() {
-            const balanceAmount = document.querySelector('.balance-amount');
+            function updateRelativeDates() {
+                const now = new Date(2025, 3, 3); // Set to April 3, 2025
+                const transactions = document.querySelectorAll('.transaction-date');
+                
+                transactions.forEach(transaction => {
+                    const parts = transaction.textContent.split('•');
+                    const idPart = parts[0].trim();
+                    const dateText = parts[1].trim();
+                    
+                    if (dateText === 'Today') {
+                        transaction.textContent = `${idPart} • Today (3/Apr)`;
+                    } else if (dateText === 'Yesterday') {
+                        transaction.textContent = `${idPart} • Yesterday (2/Apr)`;
+                    } else if (dateText === '1 Apr') {
+                        transaction.textContent = `${idPart} • 1/Apr`;
+                    } else if (dateText === '30 Mar') {
+                        transaction.textContent = `${idPart} • 30/Mar`;
+                    } else if (dateText === '28 Mar') {
+                        transaction.textContent = `${idPart} • 28/Mar`;
+                    }
+                });
+            }
             
-            // Animate the number
-            let current = 0;
-            const target = 1923450;
-            const increment = target / 30;
+            updateRelativeDates();
             
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= target) {
-                    current = target;
-                    clearInterval(timer);
+            // Simulate real-time updates
+            setInterval(() => {
+                const notificationBadge = document.querySelector('.notification-badge');
+                if (Math.random() > 0.7) {
+                    notificationBadge.textContent = parseInt(notificationBadge.textContent) + 1;
                 }
-                balanceAmount.innerHTML = `<span class="currency">LKR</span> ${Math.floor(current).toLocaleString()}.00`;
-            }, 30);
-
-            // Mobile menu toggle would go here
-            // This is just a demo so no actual functionality
+            }, 30000);
         });
     </script>
 </body>
