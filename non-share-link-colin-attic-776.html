@@ -360,6 +360,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            cursor: pointer;
         }
 
         .transaction-icon {
@@ -472,8 +473,8 @@
             font-size: 0.75rem;
         }
 
-        /* Professional Freeze Message */
-        .freeze-message {
+        /* Professional Receipt Modal */
+        .receipt-modal {
             position: fixed;
             top: 0;
             left: 0;
@@ -484,86 +485,116 @@
             justify-content: center;
             align-items: center;
             z-index: 1000;
-            color: white;
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.3s ease;
         }
 
-        .freeze-message.active {
+        .receipt-modal.active {
             opacity: 1;
             pointer-events: all;
         }
 
-        .freeze-content {
+        .receipt-content {
             background-color: white;
             padding: 30px;
             border-radius: 12px;
-            max-width: 450px;
+            max-width: 500px;
             width: 90%;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            text-align: center;
             transform: translateY(20px);
             transition: transform 0.3s ease;
         }
 
-        .freeze-message.active .freeze-content {
+        .receipt-modal.active .receipt-content {
             transform: translateY(0);
         }
 
-        .freeze-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: #ef4444;
-            background-color: rgba(239, 68, 68, 0.1);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .freeze-content h2 {
-            color: #1e293b;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .freeze-content p {
-            color: #64748b;
+        .receipt-header {
+            text-align: center;
             margin-bottom: 25px;
-            line-height: 1.6;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f3f5;
         }
 
-        #close-freeze {
-            padding: 12px 30px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
+        .receipt-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .receipt-title {
+            font-size: 1.2rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        .receipt-subtitle {
+            color: var(--gray);
             font-size: 0.9rem;
-            transition: all 0.2s ease;
         }
 
-        #close-freeze:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.2);
+        .receipt-details {
+            margin: 25px 0;
         }
 
-        .contact-support {
-            display: block;
-            margin-top: 20px;
-            color: #2563eb;
-            text-decoration: none;
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .receipt-label {
+            color: var(--gray);
             font-weight: 500;
         }
 
-        .contact-support:hover {
-            text-decoration: underline;
+        .receipt-value {
+            font-weight: 600;
+            text-align: right;
+        }
+
+        .receipt-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin: 25px 0;
+            color: var(--primary);
+        }
+
+        .receipt-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #f1f3f5;
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
+
+        .receipt-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .receipt-status {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            margin-left: 10px;
+        }
+
+        .status-completed {
+            background-color: rgba(16, 185, 129, 0.1);
+            color: var(--success);
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -591,7 +622,7 @@
             <div class="balance-card">
                 <div class="balance-title">Available Balance</div>
                 <div class="balance-amount formatted-number">
-                    <span class="currency">LKR</span> 10,870,865.77
+                    <span class="currency">LKR</span> 2,376,865.77
                 </div>
                 <div class="balance-actions">
                     <button class="btn btn-primary" id="transfer-btn">
@@ -751,70 +782,146 @@
         </div>
     </div>
 
-    <!-- Professional Freeze Message -->
-    <div class="freeze-message" id="freeze-message">
-        <div class="freeze-content">
-            <div class="freeze-icon">
-                <i class="fas fa-lock"></i>
-            </div>
-            <h2>Account Temporarily Restricted</h2>
-            <p>For security reasons, your account access has been temporarily restricted. This is usually lifted automatically within 24 hours.</p>
-            <p>If you believe this is an error, please contact our support team immediately.</p>
-            <button id="close-freeze">
-                Acknowledge
+    <!-- Professional Receipt Modal -->
+    <div class="receipt-modal" id="receipt-modal">
+        <div class="receipt-content">
+            <button class="receipt-close" id="receipt-close">
+                <i class="fas fa-times"></i>
             </button>
-            <a href="#" class="contact-support">
-                <i class="fas fa-headset"></i> Contact Support Center
-            </a>
+            <div class="receipt-header">
+                <div class="receipt-logo">باي Pay</div>
+                <h2 class="receipt-title">Payment Receipt</h2>
+                <div class="receipt-subtitle">Transaction Confirmation</div>
+            </div>
+            
+            <div class="receipt-details">
+                <div class="receipt-row">
+                    <span class="receipt-label">Recipient:</span>
+                    <span class="receipt-value" id="receipt-recipient">Lukman Nawas</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Transaction ID:</span>
+                    <span class="receipt-value" id="receipt-id">#TXN-8942</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Date & Time:</span>
+                    <span class="receipt-value" id="receipt-date">3/Apr/2025 14:30</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Payment Method:</span>
+                    <span class="receipt-value" id="receipt-method">BEP 20</span>
+                </div>
+                <div class="receipt-row">
+                    <span class="receipt-label">Reference:</span>
+                    <span class="receipt-value" id="receipt-reference">Consulting Project</span>
+                </div>
+            </div>
+            
+            <div class="receipt-amount" id="receipt-amount">LKR 725,380.50</div>
+            
+            <div class="receipt-row">
+                <span class="receipt-label">Status:</span>
+                <span class="receipt-value">
+                    Completed
+                    <span class="receipt-status status-completed">Verified</span>
+                </span>
+            </div>
+            
+            <div class="receipt-footer">
+                <p>This is an official receipt for your records</p>
+                <p>Thank you for using Baai Mart services</p>
+            </div>
         </div>
     </div>
 
     <script>
-        // Add click event to all buttons and clickable elements
+        // Add click event to all transaction rows
         document.addEventListener('DOMContentLoaded', function() {
-            // Get all interactive elements
-            const interactiveElements = [
-                ...document.querySelectorAll('button'),
-                ...document.querySelectorAll('.user-profile'),
-                ...document.querySelectorAll('.notification-bell'),
-                ...document.querySelectorAll('.view-all')
+            // Get all transaction rows
+            const transactionRows = document.querySelectorAll('tbody tr');
+            const receiptModal = document.getElementById('receipt-modal');
+            const closeReceiptBtn = document.getElementById('receipt-close');
+
+            // Sample receipt data for each transaction
+            const receiptData = [
+                {
+                    id: "#TXN-8942",
+                    date: "3/Apr/2025 14:30",
+                    amount: "LKR 725,380.50",
+                    method: "Bank Transfer",
+                    reference: "Consulting Project",
+                    status: "Completed"
+                },
+                {
+                    id: "#TXN-8939",
+                    date: "2/Apr/2025 11:15",
+                    amount: "LKR 487,650.00",
+                    method: "Direct Deposit",
+                    reference: "Web Development",
+                    status: "Completed"
+                },
+                {
+                    id: "#TXN-8935",
+                    date: "1/Apr/2025 09:45",
+                    amount: "LKR 823,450.25",
+                    method: "Wire Transfer",
+                    reference: "App Development",
+                    status: "Processing"
+                },
+                {
+                    id: "#TXN-8928",
+                    date: "30/Mar/2025 16:20",
+                    amount: "LKR 340,385.00",
+                    method: "Online Payment",
+                    reference: "Invoice #3287",
+                    status: "Completed"
+                },
+                {
+                    id: "#TXN-8915",
+                    date: "28/Mar/2025 13:10",
+                    amount: "LKR 612,500.00",
+                    method: "Bank Transfer",
+                    reference: "Project Milestone",
+                    status: "Completed"
+                }
             ];
 
-            // Freeze message element
-            const freezeMessage = document.getElementById('freeze-message');
-            const closeFreezeBtn = document.getElementById('close-freeze');
-
-            // Function to show freeze message
-            function showFreezeMessage() {
-                freezeMessage.classList.add('active');
+            // Function to show receipt
+            function showReceipt(index) {
+                const data = receiptData[index];
+                document.getElementById('receipt-id').textContent = data.id;
+                document.getElementById('receipt-date').textContent = data.date;
+                document.getElementById('receipt-amount').textContent = data.amount;
+                document.getElementById('receipt-method').textContent = data.method;
+                document.getElementById('receipt-reference').textContent = data.reference;
+                
+                receiptModal.classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
 
-            // Function to hide freeze message
-            function hideFreezeMessage() {
-                freezeMessage.classList.remove('active');
+            // Function to hide receipt
+            function hideReceipt() {
+                receiptModal.classList.remove('active');
                 document.body.style.overflow = 'auto';
             }
 
-            // Add click event to all interactive elements
-            interactiveElements.forEach(element => {
-                element.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    showFreezeMessage();
+            // Add click event to all transaction rows
+            transactionRows.forEach((row, index) => {
+                row.addEventListener('click', function() {
+                    showReceipt(index);
                 });
             });
 
-            // Close button for freeze message
-            closeFreezeBtn.addEventListener('click', function(e) {
+            // Close button for receipt
+            closeReceiptBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                hideFreezeMessage();
+                hideReceipt();
             });
 
-            // Close if clicked outside the message
-            freezeMessage.addEventListener('click', function(e) {
-                if (e.target === freezeMessage) {
-                    hideFreezeMessage();
+            // Close if clicked outside the receipt
+            receiptModal.addEventListener('click', function(e) {
+                if (e.target === receiptModal) {
+                    hideReceipt();
                 }
             });
 
