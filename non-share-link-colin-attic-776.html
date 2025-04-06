@@ -622,7 +622,7 @@
             <div class="balance-card">
                 <div class="balance-title">Available Balance</div>
                 <div class="balance-amount formatted-number">
-                    <span class="currency">LKR</span> 1,576,865.77
+                    <span class="currency">LKR</span> 1,376,865.77
                 </div>
                 <div class="balance-actions">
                     <button class="btn btn-primary" id="transfer-btn">
@@ -638,14 +638,14 @@
                 <div class="stat-header">
                     <div>
                         <div class="stat-title">This Month</div>
-                        <div class="stat-value formatted-number">LKR 9,487,320.50</div>
+                        <div class="stat-value formatted-number">LKR 10.1M</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-arrow-up"></i>
                     </div>
                 </div>
                 <div class="stat-change positive">
-                    <i class="fas fa-chart-line"></i> 18.6% from last month
+                    <i class="fas fa-chart-line"></i> 21.2% from last month
                 </div>
             </div>
             
@@ -653,14 +653,14 @@
                 <div class="stat-header">
                     <div>
                         <div class="stat-title">Pending</div>
-                        <div class="stat-value formatted-number">LKR 523,450.25</div>
+                        <div class="stat-value formatted-number">LKR 673,450.25</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-clock"></i>
                     </div>
                 </div>
                 <div class="stat-change negative">
-                    <i class="fas fa-exclamation-circle"></i> 4 transactions
+                    <i class="fas fa-exclamation-circle"></i> 6 transactions
                 </div>
             </div>
             
@@ -696,6 +696,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>
+                                <div class="transaction-meta">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-name">Osaka Marketing Web</div>
+                                        <div class="transaction-date">#TXN-8842 • Today</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="custom-date">6/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 149,000.00</td>
+                            <td><span class="status status-pending">Pending</span></td>
+                        </tr>
                         <tr>
                             <td>
                                 <div class="transaction-meta">
@@ -829,7 +845,7 @@
             
             <div class="receipt-footer">
                 <p>This is an official receipt for your records</p>
-                <p>Thank you for using Baai Mart services</p>
+                <p>Thank you for using Baai Mart Banking service</p>
             </div>
         </div>
     </div>
@@ -844,9 +860,17 @@
 
             // Sample receipt data for each transaction
             const receiptData = [
+               {
+                    id: "#TXN-8842",
+                    date: "6/Apr/2025 10:34 AM",
+                    amount: "LKR 149,000.00",
+                    method: "Crypto",
+                    reference: "Shafkhan Dummala deniya",
+                    status: "Pending"
+                },
                 {
                     id: "#TXN-8942",
-                    date: "3/Apr/2025 14:30",
+                    date: "3/Apr/2025 01:38 PM",
                     amount: "LKR 725,380.50",
                     method: "Bank Transfer",
                     reference: "Consulting Project",
@@ -854,7 +878,7 @@
                 },
                 {
                     id: "#TXN-8939",
-                    date: "2/Apr/2025 11:15",
+                    date: "2/Apr/2025 11:15 PM",
                     amount: "LKR 487,650.00",
                     method: "Direct Deposit",
                     reference: "Web Development",
@@ -862,7 +886,7 @@
                 },
                 {
                     id: "#TXN-8935",
-                    date: "1/Apr/2025 09:45",
+                    date: "1/Apr/2025 09:45 PM",
                     amount: "LKR 823,450.25",
                     method: "Wire Transfer",
                     reference: "App Development",
@@ -870,7 +894,7 @@
                 },
                 {
                     id: "#TXN-8928",
-                    date: "30/Mar/2025 16:20",
+                    date: "30/Mar/2025 06:20 PM",
                     amount: "LKR 340,385.00",
                     method: "Online Payment",
                     reference: "Invoice #3287",
@@ -878,9 +902,9 @@
                 },
                 {
                     id: "#TXN-8915",
-                    date: "28/Mar/2025 13:10",
+                    date: "28/Mar/2025 01:13 AM",
                     amount: "LKR 612,500.00",
-                    method: "Bank Transfer",
+                    method: "Crypto",
                     reference: "Project Milestone",
                     status: "Completed"
                 }
