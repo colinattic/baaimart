@@ -622,7 +622,7 @@
             <div class="balance-card">
                 <div class="balance-title">Available Balance</div>
                 <div class="balance-amount formatted-number">
-                    <span class="currency">LKR</span> 1,376,865.77
+                    <span class="currency">LKR</span> 2,976,865.77
                 </div>
                 <div class="balance-actions">
                     <button class="btn btn-primary" id="transfer-btn">
@@ -645,7 +645,7 @@
                     </div>
                 </div>
                 <div class="stat-change positive">
-                    <i class="fas fa-chart-line"></i> 21.2% from last month
+                    <i class="fas fa-chart-line"></i> 67.2% from last month
                 </div>
             </div>
             
@@ -653,7 +653,7 @@
                 <div class="stat-header">
                     <div>
                         <div class="stat-title">Pending</div>
-                        <div class="stat-value formatted-number">LKR 673,450.25</div>
+                        <div class="stat-value formatted-number">LKR 1.67M</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-clock"></i>
@@ -703,7 +703,23 @@
                                         <i class="fas fa-laptop-code"></i>
                                     </div>
                                     <div class="transaction-details">
-                                        <div class="transaction-name">Osaka Marketing Web</div>
+                                        <div  class="transaction-name">Shafkhan web</div>
+                                        <div class="transaction-date">#TXN-8842 • Today</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="custom-date">7/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 49,000.00</td>
+                            <td><span class="status status-pending">Return</span></td>
+                        </tr>
+                       <tr>
+                            <td>
+                                <div class="transaction-meta">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div  class="transaction-name">Osaka Marketing Web</div>
                                         <div class="transaction-date">#TXN-8842 • Today</div>
                                     </div>
                                 </div>
@@ -861,6 +877,14 @@
             // Sample receipt data for each transaction
             const receiptData = [
                {
+                    id: "#TXN-8852",
+                    date: "7/Apr/2025 07:34 AM",
+                    amount: "LKR 49,000.00",
+                    method: "Crypto",
+                    reference: "Shafkhan",
+                    status: "Return"
+                },
+               {
                     id: "#TXN-8842",
                     date: "6/Apr/2025 10:34 AM",
                     amount: "LKR 149,000.00",
@@ -960,7 +984,7 @@
                     const dateText = parts[1].trim();
                     
                     if (dateText === 'Today') {
-                        transaction.textContent = `${idPart} • Today (3/Apr)`;
+                        transaction.textContent = `${idPart} • Today (7/Apr)`;
                     } else if (dateText === 'Yesterday') {
                         transaction.textContent = `${idPart} • Yesterday (2/Apr)`;
                     } else if (dateText === '1 Apr') {
