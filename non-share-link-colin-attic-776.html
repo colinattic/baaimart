@@ -622,7 +622,7 @@
             <div class="balance-card">
                 <div class="balance-title">Available Balance</div>
                 <div class="balance-amount formatted-number">
-                    <span class="currency">LKR</span> 2,976,865.77
+                    <span class="currency">LKR</span> 1.29 C
                 </div>
                 <div class="balance-actions">
                     <button class="btn btn-primary" id="transfer-btn">
@@ -638,7 +638,7 @@
                 <div class="stat-header">
                     <div>
                         <div class="stat-title">This Month</div>
-                        <div class="stat-value formatted-number">LKR 10.1M</div>
+                        <div class="stat-value formatted-number">LKR 3.01 crores</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-arrow-up"></i>
@@ -653,7 +653,7 @@
                 <div class="stat-header">
                     <div>
                         <div class="stat-title">Pending</div>
-                        <div class="stat-value formatted-number">LKR 1.67M</div>
+                        <div class="stat-value formatted-number">LKR 16.1 Lakhs</div>
                     </div>
                     <div class="stat-icon">
                         <i class="fas fa-clock"></i>
@@ -696,6 +696,22 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>
+                                <div class="transaction-meta">
+                                    <div class="transaction-icon">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div  class="transaction-name">Shafkhan web</div>
+                                        <div class="transaction-date">#TXN-8892 • Today</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="custom-date">7/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 40,000.00</td>
+                            <td><span class="status status-pending">Return</span></td>
+                        </tr>
                         <tr>
                             <td>
                                 <div class="transaction-meta">
@@ -876,6 +892,14 @@
 
             // Sample receipt data for each transaction
             const receiptData = [
+                {
+                    id: "#TXN-8852",
+                    date: "7/Apr/2025 02:11 PM",
+                    amount: "LKR 40,000.00",
+                    method: "Crypto",
+                    reference: "Shafkhan",
+                    status: "Return"
+                },
                {
                     id: "#TXN-8852",
                     date: "7/Apr/2025 07:34 AM",
