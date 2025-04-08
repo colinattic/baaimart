@@ -669,6 +669,22 @@
                             <td>
                                 <div class="transaction-meta">
                                     <div class="transaction-icon">
+                                        <i class="fas fa-file-invoice-dollar"></i>
+                                    </div>
+                                    <div class="transaction-details">
+                                        <div class="transaction-name">commercial bank of ceylon</div>
+                                        <div class="transaction-date">#TXN-8928 • Yesterday</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="custom-date">7/Apr/2025</td>
+                            <td class="transaction-amount formatted-number">LKR 305,985.00</td>
+                            <td><span class="status status-completed">Completed</span></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="transaction-meta">
+                                    <div class="transaction-icon">
                                         <i class="fas fa-laptop-code"></i>
                                     </div>
                                     <div class="transaction-details">
@@ -879,7 +895,7 @@
                     if (dateText === 'Today') {
                         transaction.textContent = `${idPart} • 7/Apr (8/Apr)`;
                     } else if (dateText === 'Yesterday') {
-                        transaction.textContent = `${idPart} • Yesterday (2/Apr)`;
+                        transaction.textContent = `${idPart} • Monday`;
                     } else if (dateText === '1 Apr') {
                         transaction.textContent = `${idPart} • 1/Apr`;
                     } else if (dateText === '30 Mar') {
