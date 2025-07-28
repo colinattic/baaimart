@@ -3,98 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="/styles/homeProduct.css">
-    <link rel="stylesheet" href="/styles/test.css">
-    <link rel="stylesheet" href="styles/style-for-mobile.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="styles/productHeadermobile.css">
-    <link rel="stylesheet" href="styles/nav-bottom.css">
-    <link rel="stylesheet" href="styles/nav.css">
+    <title>Baai Mart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
 
+        body {
+            background: #ffffff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .paper-header {
+            background: #f8f9ff;
+            padding: 25px 30px;
+            border-bottom: 1px solid #eaeef7;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            color: #1a2a6c;
+            margin-bottom: 8px;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .paper-content {
+            padding: 40px 30px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            color: #1a2a6c;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f5ff;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .content-text {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .content-text p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .highlight-box {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #1a2a6c;
+            margin: 30px 0;
+            font-style: italic;
+            color: #444;
+            position: relative;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px 0;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
+            
+            .paper-header {
+                padding: 20px 15px;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .paper-content {
+                padding: 30px 20px;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .content-text {
+                font-size: 1rem;
+            }
+            
+            .highlight-box {
+                padding: 20px 15px 20px 20px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="mobile-header-view js-mobile-header-view" style="display: none;" ><!--mobile nav view open-->
-  </div><!--mobile nav view close-->
-
-
-  <nav class="js-nav-bar"><!--nav open-->   
-  </nav><!--nav close-->
-
-
-        <!--end of main header-->
-        <div class="nav-bottom js-nav-bottom"><!--nav bottom open-->   
-        </div><!--nav-bottom close-->
-
-
-
-      
-        <div class="header-slider js-header-slider"><!--header slider open-->
-        </div><!--header slider close-->
+    <div class="container">
+        <div class="paper-header">
+            <h1 class="title">Baai Mart</h1>
+            <p class="subtitle">White Paper Overview</p>
+        </div>
         
-
-  
+        <div class="paper-content">
+            <h2 class="section-title">Overview</h2>
+            
+            <div class="content-text">
+                <p>Baai Mart (BAAI) is a decentralized token initially deployed as a BEP-20 asset on the Binance Smart Chain (BSC). It is designed as a lightweight, community-driven digital currency focused on fast, secure, and low-cost payments for everyday use.</p>
+                
+                <div class="highlight-box">
+                    <p>With a limited total supply of 1.2 million tokens, Baai Mart prioritizes simplicity, security, and accessibility to drive adoption in real-world and online ecosystems.</p>
+                </div>
+                
+                <p>In the future, Baai Mart plans to expand to multiple blockchain networks to increase accessibility and interoperability.</p>
+            </div>
+        </div>
         
-        <div class="header-offer-container js-header-offer-container"><!--header content open-->
-        </div><!--header content close-->
-  
-
-
-      <div class="home-products-to-see"> <!--Home products to see open-->
-
-
-        <div class="main-head-mobile" style="display: none;"><!-- main head mobile open-->
-          <div class="mobile-header-box"><!--mobile header open -->
-              <div class="mobile-header-welcome"><!-- welcome title-->
-                  <!-- welcome title open -->
-                  <h2 style="color: rgb(253, 56, 56);">Baai Mart</h2>
-                  <p>We Accepting <img src="images/assets/btc-logo.png" width="94px" alt=""></p>
-                  <!-- welcome title close -->
-              </div><!-- welcome title-->
-      
-              <div class="offer-products-header-mobile js-offer-pdt-header-mobile-part-1">
-                  <!-- offer product open -->
-              </div>
-          </div><!--mobile header open -->
-      </div><!--main head mobile close -->
-      
-     
-
-    
-
-
-
-        <h3 class="other-content-topic">More to Love</h3>
-        
-        <div class="home-products js-home-products"> <!--Home products open-->
-
-        </div><!--Home products close-->
-       
-      </div><!--Home products to see close-->
-
-      <footer class="footer-mobile" style="display: none;">
-        <i class="material-icons icon">home</i>
-        <i class="material-icons icon">search</i>
-        <i class="material-icons icon">favorite_border</i>
-        <i class="material-icons icon">shopping_cart</i>
-        <a href="/signin.html">
-          <i class="material-icons icon">person_outline</i>
-        </a>
-       
-      </footer>  
-      <footer>
-        <img src="images/assets/fine-logo-light.png" width="100" alt="">
-        <p>© 2015-2024&nbsp;&nbsp;&nbsp;&nbsp;baaimart.com&nbsp;&nbsp;&nbsp;&nbsp;</p>
-      </footer>
-
-       <script src="/scripts/homeProduct.js"></script>
-        <script src="scripts/script.js"></script>
-        <script src="/scripts/testdata.js"></script>
-        <script src="scripts/nav-mobile.js"></script>
-        <script src="scripts/nav.js"></script>
-        <script src="scripts/nav-bottom.js"></script>
-        <script src="scripts/header-img-slider.js"></script>
-       
+        <div class="footer">
+            <p>© 2025 baaimart.com Secure Payment Currency</p>
+        </div>
+    </div>
 </body>
 </html>
