@@ -32,6 +32,7 @@
             border-radius: 8px;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
             overflow: hidden;
+            position: relative;
         }
 
         .paper-header {
@@ -82,7 +83,7 @@
 
         .subtitle {
             font-size: 1.1rem;
-            color: #666; /* Changed to visible color */
+            color: #666;
             text-align: center;
             margin-bottom: 5px;
         }
@@ -123,6 +124,82 @@
             color: #444;
             position: relative;
         }
+        
+        .contract-container {
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .contract-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #000000;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+        
+        .address-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border: 1px solid #eaeef7;
+            padding: 12px 15px;
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .contract-address {
+            font-size: 0.95rem;
+            color: #666;
+            font-family: monospace;
+            word-break: break-all;
+            padding-right: 10px;
+            flex-grow: 1;
+        }
+        
+        .copy-btn {
+            background: #0c0c0c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 8px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-btn:hover {
+            background: #1e1e1e;
+            transform: translateY(-2px);
+        }
+        
+        .copy-btn:active {
+            transform: translateY(0);
+        }
+        
+        .copy-feedback {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a2a6c;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .copy-feedback.show {
+            opacity: 1;
+        }
 
         .footer {
             text-align: center;
@@ -143,7 +220,6 @@
             
             .title {
                 font-size: 1.5rem;
-                padding-left: 0; /* Removed left padding */
             }
             
             .verified-badge {
@@ -159,7 +235,7 @@
             
             .subtitle {
                 font-size: 1rem;
-                color: #666; /* Ensure visibility on mobile */
+                color: #666;
             }
             
             .paper-content {
@@ -176,6 +252,30 @@
             
             .highlight-box {
                 padding: 20px 15px;
+            }
+            
+            .address-box {
+                flex-direction: column;
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .contract-address {
+                padding-right: 0;
+                padding-bottom: 10px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .copy-btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .copy-feedback {
+                top: -35px;
+                font-size: 0.8rem;
+                white-space: nowrap;
             }
         }
     </style>
@@ -203,6 +303,17 @@
                 <p>With a limited total supply of 1.2 million tokens, Baai Mart prioritizes simplicity, security, and accessibility to drive adoption in real-world and online ecosystems.</p>
             
                 <p>In the future, Baai Mart plans to expand to own & multiple blockchain networks to increase accessibility and interoperability.</p>
+                
+                <div class="contract-container">
+                    <span class="contract-label">Contract Address</span>
+                    <div class="address-box">
+                        <div class="contract-address">0x936A2E3891a3Ec019D2A0762Ab0397c474eD5E80</div>
+                        <button class="copy-btn" id="copyButton">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                        <div class="copy-feedback" id="copyFeedback">Copied to clipboard!</div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -210,5 +321,39 @@
             <p>© 2025 baaimart.com Secure Payment Currency</p>
         </div>
     </div>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const copyButton = document.getElementById('copyButton');
+            const copyFeedback = document.getElementById('copyFeedback');
+            const contractAddress = '0x936A2E3891a3Ec019D2A0762Ab0397c474eD5E80';
+            
+            copyButton.addEventListener('click', function() {
+                // Create a temporary textarea to copy from
+                const textArea = document.createElement('textarea');
+                textArea.value = contractAddress;
+                document.body.appendChild(textArea);
+                textArea.select();
+                
+                try {
+                    // Copy the text
+                    document.execCommand('copy');
+                    
+                    // Show feedback
+                    copyFeedback.classList.add('show');
+                    
+                    // Hide feedback after 2 seconds
+                    setTimeout(() => {
+                        copyFeedback.classList.remove('show');
+                    }, 2000);
+                } catch (err) {
+                    console.error('Failed to copy text: ', err);
+                }
+                
+                // Clean up
+                document.body.removeChild(textArea);
+            });
+        });
+    </script>
 </body>
 </html>
