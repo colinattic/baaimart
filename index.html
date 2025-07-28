@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baai Mart</title>
+    <link rel="icon" href="icon.png.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,7 +15,7 @@
         }
 
         body {
-            background: #ffffff;
+            background: #f8f9ff;
             color: #333;
             line-height: 1.6;
             padding: 20px;
@@ -34,22 +35,54 @@
         }
 
         .paper-header {
-            background: #f8f9ff;
-            padding: 25px 30px;
+            background: linear-gradient(to right, #ffffff, #ffffff);
+            padding: 30px 30px 25px;
             border-bottom: 1px solid #eaeef7;
+            position: relative;
+        }
+
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-container {
+            display: inline-flex;
+            align-items: center;
+            position: relative;
+            margin-bottom: 8px;
         }
 
         .title {
             font-size: 1.8rem;
             color: #000000;
-            margin-bottom: 8px;
             font-weight: 700;
             text-align: center;
         }
 
+        .verified-badge {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #ffffff;
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .verified-badge img {
+            width: 28px;
+            height: 28px;
+            object-fit: contain;
+        }
+
         .subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: #666; /* Changed to visible color */
             text-align: center;
             margin-bottom: 5px;
         }
@@ -60,7 +93,7 @@
 
         .section-title {
             font-size: 1.4rem;
-            color: #000000;
+            color: #1a2a6c;
             margin-bottom: 25px;
             padding-bottom: 10px;
             border-bottom: 2px solid #f0f5ff;
@@ -84,7 +117,7 @@
             background: #f8f9ff;
             padding: 25px;
             border-radius: 8px;
-            border-left: 4px solid #1a2a6c;
+            border-left: 4px solid #ffffff;
             margin: 30px 0;
             font-style: italic;
             color: #444;
@@ -105,15 +138,28 @@
             }
             
             .paper-header {
-                padding: 20px 15px;
+                padding: 25px 15px;
             }
             
             .title {
                 font-size: 1.5rem;
+                padding-left: 0; /* Removed left padding */
+            }
+            
+            .verified-badge {
+                width: 32px;
+                height: 32px;
+                right: -32px;
+            }
+            
+            .verified-badge img {
+                width: 22px;
+                height: 22px;
             }
             
             .subtitle {
                 font-size: 1rem;
+                color: #666; /* Ensure visibility on mobile */
             }
             
             .paper-content {
@@ -129,7 +175,7 @@
             }
             
             .highlight-box {
-                padding: 20px 15px 20px 20px;
+                padding: 20px 15px;
             }
         }
     </style>
@@ -137,8 +183,15 @@
 <body>
     <div class="container">
         <div class="paper-header">
-            <h1 class="title">Baai Mart</h1>
-            <p class="subtitle">Secure Payment Currency</p>
+            <div class="header-content">
+                <div class="title-container">
+                    <h1 class="title">Baai Mart</h1>
+                    <div class="verified-badge">
+                        <img src="logo.png" alt="Verified Badge">
+                    </div>
+                </div>
+                <p class="subtitle">Secure Payment Currency</p>
+            </div>
         </div>
         
         <div class="paper-content">
@@ -147,9 +200,8 @@
             <div class="content-text">
                 <p>Baai Mart (BAAI) is a decentralized token initially deployed as a BEP-20 asset on the Binance Smart Chain (BSC). It is designed as a lightweight, community-driven digital currency focused on fast, secure, and low-cost payments for everyday use.</p>
                 
-                    <p>With a limited total supply of 1.2 million tokens, Baai Mart prioritizes simplicity, security, and accessibility to drive adoption in real-world and online ecosystems.</p>
+                <p>With a limited total supply of 1.2 million tokens, Baai Mart prioritizes simplicity, security, and accessibility to drive adoption in real-world and online ecosystems.</p>
             
-                
                 <p>In the future, Baai Mart plans to expand to own & multiple blockchain networks to increase accessibility and interoperability.</p>
             </div>
         </div>
